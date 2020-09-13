@@ -16,7 +16,8 @@ char playerOneInput;
 char playerTwoInput;
 bool gameWon = false;
 
-int calculateWinner() {
+int calculateWinner() //needs more win conditions
+{
 
     if (one == 'O' && two == 'O' && three == 'O') {
         gameWon = true;
@@ -25,7 +26,8 @@ int calculateWinner() {
 }
 
 
-int checkInput() {
+int checkInput() //needs to check for multiple inputs on same number. return error code.
+{
     if (one == 'O' || one == 'X') {
         std::cout << "Please choose an unoccupied square";
     }
@@ -35,113 +37,133 @@ int checkInput() {
     if (three == 'O' || three == 'X') {
         std::cout << "Please choose an unoccupied square";
     }
+
+    return 0;
+
 }
 
-
-
-int main()
+int playerOne() 
 {
+
+    std::cout << std::endl;
+    std::cout << "| " << one << " | " << "| " << two << " | " << "| " << three << " |" << std::endl;
+    std::cout << "| " << four << " | " << "| " << five << " | " << "| " << six << " |" << std::endl;
+    std::cout << "| " << seven << " | " << "| " << eight << " | " << "| " << nine << " |" << std::endl;
+    std::cout << std::endl;
+    std::cout << player1 << " - Enter a number from 1 to 9:" << std::endl;
+
+    std::cin >> playerOneInput;
+
+    switch (playerOneInput)
+    {
+    case '1':
+        one = 'O';
+        break;
+    case '2':
+        two = 'O';
+        break;
+    case '3':
+        three = 'O';
+        break;
+    case '4':
+        four = 'O';
+        break;
+    case '5':
+        five = 'O';
+        break;
+    case '6':
+        six = 'O';
+        break;
+    case '7':
+        seven = 'O';
+        break;
+    case '8':
+        eight = 'O';
+        break;
+    case '9':
+        nine = 'O';
+        break;
+    }
+
+    calculateWinner();
+
+    return 0;
+}
+
+int playerTwo() {
+    std::cout << std::endl;
+    std::cout << "| " << one << " | " << "| " << two << " | " << "| " << three << " |" << std::endl;
+    std::cout << "| " << four << " | " << "| " << five << " | " << "| " << six << " |" << std::endl;
+    std::cout << "| " << seven << " | " << "| " << eight << " | " << "| " << nine << " |" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << player2 << " - Enter a number from 1 to 9:" << std::endl;
+    std::cin >> playerTwoInput;
+
+    switch (playerTwoInput)
+    {
+    case '1':
+        one = 'X';
+        break;
+    case '2':
+        two = 'X';
+        break;
+    case '3':
+        three = 'X';
+        break;
+    case '4':
+        four = 'X';
+        break;
+    case '5':
+        five = 'X';
+        break;
+    case '6':
+        six = 'X';
+        break;
+    case '7':
+        seven = 'X';
+        break;
+    case '8':
+        eight = 'X';
+        break;
+    case '9':
+        nine = 'X';
+        break;
+    }
+
+    calculateWinner();
+
+    return 0;
+}
+
+int main() // needs to loop between playerOne and playerTwo
+{
+    std::cout << "\033[32m" << "*** Welcome to Tic Tac Toe ***" << std::endl;
+
 start:
 
     if (gameWon == false) {
 
-        std::cout << "\033[32m" << "*** Welcome to Tic Tac Toe ***" << std::endl;
-        std::cout << std::endl;
-        std::cout << "| " << one << " | " << "| " << two << " | " << "| " << three << " |" << std::endl;
-        std::cout << "| " << four << " | " << "| " << five << " | " << "| " << six << " |" << std::endl;
-        std::cout << "| " << seven << " | " << "| " << eight << " | " << "| " << nine << " |" << std::endl;
-        std::cout << std::endl;
-        std::cout << player1 << " - Enter a number from 1 to 9:" << std::endl;
-
-        std::cin >> playerOneInput;
-
-        switch (playerOneInput)
-        {
-        case '1':
-            one = 'O';
-            break;
-        case '2':
-            two = 'O';
-            break;
-        case '3':
-            three = 'O';
-            break;
-        case '4':
-            four = 'O';
-            break;
-        case '5':
-            five = 'O';
-            break;
-        case '6':
-            six = 'O';
-            break;
-        case '7':
-            seven = 'O';
-            break;
-        case '8':
-            eight = 'O';
-            break;
-        case '9':
-            nine = 'O';
-            break;
-        }
-
-        std::cout << "\033[32m" << "*** Welcome to Tic Tac Toe ***" << std::endl;
-        std::cout << std::endl;
-        std::cout << "| " << one << " | " << "| " << two << " | " << "| " << three << " |" << std::endl;
-        std::cout << "| " << four << " | " << "| " << five << " | " << "| " << six << " |" << std::endl;
-        std::cout << "| " << seven << " | " << "| " << eight << " | " << "| " << nine << " |" << std::endl;
-        std::cout << std::endl;
-        
-        calculateWinner();
+        playerOne();
 
     }
 
     if (gameWon == false){
-        std::cout << player2 << " - Enter a number from 1 to 9:" << std::endl;
-        std::cin >> playerTwoInput;
 
-        switch (playerTwoInput)
-        {
-        case '1':
-            one = 'X';
-            break;
-        case '2':
-            two = 'X';
-            break;
-        case '3':
-            three = 'X';
-            break;
-        case '4':
-            four = 'X';
-            break;
-        case '5':
-            five = 'X';
-            break;
-        case '6':
-            six = 'X';
-            break;
-        case '7':
-            seven = 'X';
-            break;
-        case '8':
-            eight = 'X';
-            break;
-        case '9':
-            nine = 'X';
-            break;
-        }
+        playerTwo();
 
-        calculateWinner();
-
-        goto start;
     }
 
     if (gameWon == true) {
+
+        std::cout << std::endl;
+        std::cout << "| " << one << " | " << "| " << two << " | " << "| " << three << " |" << std::endl;
+        std::cout << "| " << four << " | " << "| " << five << " | " << "| " << six << " |" << std::endl;
+        std::cout << "| " << seven << " | " << "| " << eight << " | " << "| " << nine << " |" << std::endl;
+        std::cout << std::endl;
         
         std::cout << "Player One wins the game!";
     }
-
 
 }
 
